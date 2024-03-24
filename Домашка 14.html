@@ -45,6 +45,60 @@
         onchange="countChar()" onkeyup="countChar()"></textarea><br/>        
     </div>
 
-    <script src="./js/02_class.js"></script>
+    <script>
+       
+
+class Marker {
+    constructor(_properties) {
+        //размер шрифта
+        this.markerFont = _properties.markerFont;
+        // поле, которое хранит цвет маркера;
+        this.markerColor = _properties.markerColor;
+        // поле, которое хранит количество чернил в маркере (в процентах);
+    }
+    print() {
+        let text = document.getElementById("textarea");
+        text.style.color = this.markerColor;
+        text.style.fontSize = `${this.markerFont}px`;
+        console.log (text);
+        }
+  }
+  let fill = document.querySelector(".fill");
+  let maxLength = document.getElementById("textarea"); 
+  
+
+  function countChar() { 
+    let textBox = maxLength.value.replace(/[\s]/g, '').length; 
+    let _markerQuatity = 400;
+    
+    let btn = document.querySelector("button");
+    btn.addEventListener('click', function () {
+        fill.style.height = `${400}px`;
+        textBox = 0;        
+    });
+
+    fill.style.height = `${_markerQuatity - (textBox * 2)}px`;
+    maxLength.setAttribute("maxlength", 200);
+    console.log(textBox);
+    
+};
+   
+let write = new Marker({
+    markerFont: 40,    
+    markerColor: 'red',       
+});
+write.print ();
+
+// function quantity() {    
+//     fill.style.height = `${400}px`;
+     
+// }
+
+
+
+
+
+
+    </script>
 </body>
 </html>
